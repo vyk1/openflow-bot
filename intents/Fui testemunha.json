@@ -1,0 +1,72 @@
+{
+  "id": "523b1187-6f78-4b00-a3a5-55d5efc5517f",
+  "name": "Fui testemunha",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "pt-br",
+          "speech": [
+            "Você testemunhou violência no trabalho. E agora?"
+          ],
+          "condition": ""
+        },
+        {
+          "type": "4",
+          "title": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "title": "Fale com a vítima",
+                  "subtitle": "Tenha empatia com seu/sua colega e não se omita! O medo acaba tornando o assediador mais forte e permite que ele continue praticando os mesmos atos com outras vítimas.",
+                  "type": "list"
+                },
+                {
+                  "subtitle": "Caso a vítima autorize, você pode denunciar aos órgãos competentes, ao setor responsável e/ou superior hierárquico do assediador e/ou para a Ouvidoria-Geral do Estado.",
+                  "type": "list",
+                  "title": "Denuncie!"
+                },
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "text": "Fui vítima"
+                    },
+                    {
+                      "text": "Sou gestor"
+                    },
+                    {
+                      "text": "Quero saber mais"
+                    }
+                  ]
+                }
+              ]
+            ]
+          },
+          "textToSpeech": "",
+          "lang": "pt-br",
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

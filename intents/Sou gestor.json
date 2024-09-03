@@ -1,0 +1,88 @@
+{
+  "id": "9e625123-8c13-4f93-9a1b-adb93c9cb470",
+  "name": "Sou gestor",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "pt-br",
+          "speech": [
+            "Seu subordinado sofreu violência no trabalho. E agora?"
+          ],
+          "condition": ""
+        },
+        {
+          "type": "4",
+          "title": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "title": "Formule Estratégias de Prevenção e Enfrentamento",
+                  "subtitle": "É importante formular estratégias organizacionais de prevenção e enfrentamento das situações de violência no ambiente de trabalho. Considere criar políticas e procedimentos claros para abordar diferentes formas de violência e assédio. Além disso, implemente programas de treinamento e conscientização para todos os funcionários.",
+                  "type": "list"
+                },
+                {
+                  "title": "Estabeleça um Código de Conduta do Servidor",
+                  "subtitle": "Estabelecer e disseminar um código de conduta do servidor pode ajudar a prevenir violência, discriminação e assédio no trabalho. Torne o código claro, acessível e amplamente divulgado para garantir que todos os servidores conheçam suas responsabilidades e os comportamentos esperados.",
+                  "type": "list"
+                },
+                {
+                  "title": "Incentive Boas Relações de Trabalho",
+                  "subtitle": "Incentivar as boas relações de trabalho e a cooperação entre os servidores é essencial. Considere realizar atividades de integração, criar programas de reconhecimento e recompensas, e promover uma cultura organizacional baseada no respeito e na colaboração.",
+                  "type": "list"
+                },
+                {
+                  "type": "list",
+                  "title": "Assegure o Funcionamento de Ouvidorias",
+                  "subtitle": "Assegurar o funcionamento adequado de ouvidorias é crucial para que as vítimas possam realizar queixas de condutas abusivas. Garanta que as ouvidorias sejam eficientes, imparciais e ofereçam o apoio necessário às vítimas, além de manter a confidencialidade das denúncias."
+                },
+                {
+                  "subtitle": "É fundamental resguardar o direito do servidor vítima de violência de ter sua denúncia investigada, quando esta estiver bem fundamentada. Estabeleça procedimentos transparentes para a apuração dos fatos e assegure que as investigações sejam conduzidas de forma justa e imparcial, com proteção para a vítima contra represálias.",
+                  "type": "list",
+                  "title": "Resguarde o Direito à Investigação de Denúncias"
+                },
+                {
+                  "options": [
+                    {
+                      "text": "Fui vítima"
+                    },
+                    {
+                      "text": "Fui testemunha"
+                    },
+                    {
+                      "text": "Quero saber mais"
+                    }
+                  ],
+                  "type": "chips"
+                }
+              ]
+            ]
+          },
+          "textToSpeech": "",
+          "lang": "pt-br",
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": [],
+  "endInteraction": true
+}

@@ -1,0 +1,61 @@
+{
+  "id": "6224af72-7a42-4ee9-be61-f5ded4d02dcf",
+  "name": "Quero saber mais",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "pt-br",
+          "condition": ""
+        },
+        {
+          "type": "4",
+          "title": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "info",
+                  "title": "Confira mais materiais sobre feitos pela CGE SC",
+                  "icon": {
+                    "type": "link"
+                  }
+                },
+                {
+                  "type": "button",
+                  "link": "https://www.cge.sc.gov.br/combateaoassedio/",
+                  "icon": {
+                    "type": "link"
+                  },
+                  "text": "Programa Combate ao Assédio da CGE SC"
+                }
+              ]
+            ]
+          },
+          "textToSpeech": "",
+          "lang": "pt-br",
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": [],
+  "endInteraction": true
+}

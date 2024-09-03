@@ -1,0 +1,75 @@
+{
+  "id": "88ae3105-ead6-4d98-a314-48eb6c0e3f41",
+  "name": "Violencias no trabalho",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [
+        {
+          "name": "Violenciasnotrabalho-followup",
+          "lifespan": 2
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "pt-br",
+          "condition": ""
+        },
+        {
+          "type": "4",
+          "title": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "info",
+                  "title": "Você sabia que violência no trabalho, não é só fisica?",
+                  "subtitle": "O Manual de Saúde e Segurança do Servidor Público de Santa Catarina define a violência no ambiente de trabalho como toda e qualquer ação ou comportamento, explícito ou sutil, que resulte em agressão, humilhação ou ameaça ao servidor ou aos indivíduos relacionados a ele.\n\nDesta forma, a violência no trabalho pode se manifestar em diferentes formas.",
+                  "image": {}
+                },
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "text": "Mais sobre discriminação"
+                    },
+                    {
+                      "text": "Mais sobre assédio"
+                    }
+                  ]
+                },
+                {
+                  "type": "button",
+                  "text": "Programa Combate ao Assédio da CGE SC",
+                  "icon": {
+                    "type": "link"
+                  },
+                  "link": "https://www.cge.sc.gov.br/combateaoassedio/"
+                }
+              ]
+            ]
+          },
+          "textToSpeech": "",
+          "lang": "pt-br",
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

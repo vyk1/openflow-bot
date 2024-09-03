@@ -1,0 +1,78 @@
+{
+  "id": "e4a5f6a6-7b69-4e11-b56e-762f8b9d6837",
+  "name": "Assédio",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "pt-br",
+          "speech": [
+            "Assediar é importunar, molestar, aborrecer, incomodar Implica cerco, insistência impertinente de forma a abalar a moral de quem está sendo assediado"
+          ],
+          "condition": ""
+        },
+        {
+          "type": "4",
+          "title": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "subtitle": "Existem 3 aspectos que definem o assédio",
+                  "type": "info"
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "list",
+                  "title": "Prática continuada, ou seja, violência que se estende ao longo do tempo"
+                },
+                {
+                  "type": "list",
+                  "title": "Atitudes abusivas que suscitam vergonha ou constrangimento"
+                },
+                {
+                  "type": "list",
+                  "title": "Ações que objetivam desestabilizar emocionalmente a vítima e/ou degradar psicologicamente o ambiente de trabalho"
+                },
+                {
+                  "options": [
+                    {
+                      "text": "Mais sobre discriminação"
+                    },
+                    {
+                      "text": "Assédio ou discriminação?"
+                    }
+                  ],
+                  "type": "chips"
+                }
+              ]
+            ]
+          },
+          "textToSpeech": "",
+          "lang": "pt-br",
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}
