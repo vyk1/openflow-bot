@@ -18,11 +18,11 @@ let intentions = {
                 "options": [
                     {
                         "text": "Sei o que é um bot",
-                        "follow-up": "sei-bot"
+                        "followUp": "sei-bot"
                     },
                     {
                         "text": "Não sei o que é um bot",
-                        "follow-up": "nao-sei-bot"
+                        "followUp": "nao-sei-bot"
                     }
                 ]
             }
@@ -46,7 +46,7 @@ let intentions = {
                             {
                                 "text": "Continuar",
                                 "type": "end",
-                                "follow-up": "violencia-trabalho"
+                                "followUp": "violencia-trabalho"
                             }
                         ]
                     }
@@ -56,7 +56,7 @@ let intentions = {
                 "speech": [
                     {
                         "type": "info",
-                        "title": "Que bom que você sabe o que é um bot. Clique em \"Continuar\""
+                        "title": "Que bom que você sabe o que é um bot."
                     }
                 ],
                 "content": [
@@ -66,7 +66,7 @@ let intentions = {
                             {
                                 "text": "Continuar",
                                 "type": "end",
-                                "follow-up": "violencia-trabalho"
+                                "followUp": "violencia-trabalho"
                             }
                         ]
                     }
@@ -97,11 +97,11 @@ let intentions = {
                 "options": [
                     {
                         "text": "Mais sobre discriminação",
-                        "follow-up": "violencia-discriminacao"
+                        "followUp": "violencia-discriminacao"
                     },
                     {
                         "text": "Mais sobre assédio",
-                        "follow-up": "violencia-assedio"
+                        "followUp": "violencia-assedio"
                     }
                 ]
             }
@@ -121,7 +121,7 @@ let intentions = {
                         "options": [
                             {
                                 "text": "Mais sobre assédio",
-                                "follow-up": "violencia-assedio"
+                                "followUp": "violencia-assedio"
                             }
                         ]
                     }
@@ -141,7 +141,7 @@ let intentions = {
                         "options": [
                             {
                                 "text": "Mais sobre discriminação",
-                                "follow-up": "violencia-discriminacao"
+                                "followUp": "violencia-discriminacao"
                             }
                         ]
                     }
@@ -155,15 +155,22 @@ export function startFollowUp(followUp) {
     followUp.speech.forEach(speech => {
         addBotMessage(speech, false);
     })
+    
     if (followUp.content[0].length > 0) {
         insertContent(followUp);
     } else {
         // Significa que é o final da conversa para esta intention
         // Aí renderiza o botão de finalizar a conversa        
         followUp.content[1].options.forEach(option => {
+
             if (option.type == 'end') {
-                addOptions(option, followUp);
-                startIntention(option['follow-up']);
+                startIntention(option['followUp']);
+            } else {
+                console.log(option, followUp);
+                console.log(intentions);
+                
+                //addOptions(option, followUp['followUps'][option['followUp']]);
+
             }
         });
 
@@ -189,14 +196,12 @@ export function getFollowUp(key) {
 }
 
 export function insertContent(intention) {
-    console.log(intention.content);
-
     intention.content[0].forEach(element => {
         addBotMessage(element);
     });
 
     intention.content[1].options.forEach(option => {
-        addOptions(option, intention['followUps'][option['follow-up']]);
+        addOptions(option, intention['followUps'][option['followUp']]);
     });
 }
 
@@ -207,7 +212,7 @@ export function addOptions(option, followUp) {
     button.classList.add('chat-buttons', 'chat-button');
     button.addEventListener('click', () => {
         startFollowUp(followUp);
-
+        button.disabled = true;
     });
     chatLog.appendChild(button);
     chatLog.scrollTop = chatLog.scrollHeight;
