@@ -88,11 +88,8 @@ let intentions = {
         "content": [
             [
                 {
-                    "type": "button",
+                    "type": "link",
                     "title": "Programa Combate ao Assédio da CGE SC",
-                    "icon": {
-                        "type": "link"
-                    },
                     "link": "https://www.cge.sc.gov.br/combateaoassedio/"
                 }
             ],
@@ -201,6 +198,100 @@ let intentions = {
                             {
                                 "text": "Mais sobre discriminação",
                                 "followUp": "violencia-discriminacao"
+                            },
+                            {
+                                "text": "Diferenças entre assédio e discriminação",
+                                "followUp": "violencia-diferencas",
+                                "type": "end",
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "violencia-diferencas": {
+        "name": "Diferenças entre assédio e discriminação",
+        "speech": [
+            {
+                "type": "info",
+                "title": "Existe uma estreita relação entre assédio moral e discriminação, embora sejam fenômenos distintos. ",
+                "subtitle": "Atos discriminatórios podem desencadear a prática de assédio moral, especialmente quando direcionados a grupos vulneráveis"
+            },
+            {
+                "type": "info",
+                "title": "No entanto, é importante destacar que nem toda prática de assédio moral tem como base a discriminação, assim como nem todo ato discriminatório pontual configura assédio moral.",
+                "subtitle": "O assédio moral é caracterizado pela prática continuada de atos abusivos, enquanto a discriminação pode ser pontual."
+            },
+        ],
+        "content": [
+            [],
+            {
+                "options": [
+                    {
+                        "text": "O que fazer quando presenciar violência no trabalho?",
+                        "followUp": "violencia-diferencas-acao"
+                    }
+                ]
+            }
+        ],
+        "followUps": {
+            "violencia-diferencas-acao": {
+                "speech": [
+                    {
+                        "type": "info",
+                        "title": "Dependendo do seu papel, você pode tomar diferentes ações",
+                    },
+                ],
+                "content": [
+                    [],
+                    {
+                        "options": [
+                            {
+                                "text": "Denunciar",
+                                "followUp": "violencia-diferencas-acao-denunciar"
+                            },
+                            {
+                                "text": "Apoiar",
+                                "followUp": "violencia-diferencas-acao-apoiar"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "violencia-diferencas-acao-denunciar": {
+                "speech": [
+                    {
+                        "type": "info",
+                        "title": "Denunciar é um ato de coragem e solidariedade",
+                    },
+                ],
+                "content": [
+                    [],
+                    {
+                        "options": [
+                            {
+                                "text": "Apoiar",
+                                "followUp": "violencia-diferencas-acao-apoiar"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "violencia-diferencas-acao-apoiar": {
+                "speech": [
+                    {
+                        "type": "info",
+                        "title": "Apoiar é um ato de solidariedade e empatia",
+                    },
+                ],
+                "content": [
+                    [],
+                    {
+                        "options": [
+                            {
+                                "text": "Continuar",
+                                "followUp": "violencia-diferencas-acao-denunciar"
                             }
                         ]
                     }
@@ -209,6 +300,7 @@ let intentions = {
         }
     }
 }
+
 
 export function startFollowUp(followUp) {
     followUp.speech.forEach(speech => {
@@ -226,7 +318,7 @@ export function startFollowUp(followUp) {
                 startIntention(option['followUp']);
             } else {
                 const header = document.getElementById('chat-header');
-                let intention = getIntention(header.textContent);
+                let intention = getIntention(header['data-title']);
 
                 addOptions(option, intention['followUps'][option['followUp']]);
 
@@ -294,10 +386,17 @@ export function addUserInteraction(interaction) {
 export function addBotMessage(speech) {
     const chatLog = document.getElementById('chat-log');
     const title = document.createElement('div');
-    if(speech.type == 'image') {
+    if (speech.type == 'image') {
         const image = document.createElement('img');
         image.src = speech.src;
         chatLog.appendChild(image);
+    }
+    if (speech.type == 'link') {
+        const link = document.createElement('a');
+        link.href = speech.link;
+        link.textContent = speech.title;
+        link.target = '_blank';
+        chatLog.appendChild(link);
     }
     title.classList.add(speech.type, 'message');
     let prefix = 'DRICA: '
