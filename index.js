@@ -33,11 +33,12 @@ let intentions = {
                 "speech": [
                     {
                         "type": "image",
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q\u003dtbn:ANd9GcStEBHnnElM5xC5XAGiXerMjzMjpOhycZD8YQ\u0026s",
                         "title": "O que é um bot?",
                     },
                     {
                         "type": "info",
-                        "title": "Um bot é um programa de computador que simula ações humanas repetidas vezes de maneira padrão. Clique em \"Continuar\""
+                        "title": "Um bot é um programa de computador que simula ações humanas repetidas vezes de maneira padrão."
                     }
                 ],
                 "content": [
@@ -293,6 +294,11 @@ export function addUserInteraction(interaction) {
 export function addBotMessage(speech) {
     const chatLog = document.getElementById('chat-log');
     const title = document.createElement('div');
+    if(speech.type == 'image') {
+        const image = document.createElement('img');
+        image.src = speech.src;
+        chatLog.appendChild(image);
+    }
     title.classList.add(speech.type, 'message');
     let prefix = 'DRICA: '
 
