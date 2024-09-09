@@ -405,6 +405,7 @@ export function addBotMessage(speech) {
     chatLog.appendChild(title);
     if (speech.subtitle != null) {
         const subtitle = document.createElement('div');
+        subtitle.classList.add('message');
         subtitle.textContent = prefix + speech.subtitle;
         chatLog.appendChild(subtitle);
     }
