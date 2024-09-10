@@ -310,16 +310,17 @@ export function startFollowUp(followUp) {
     if (followUp.content[0].length > 0) {
         insertContent(followUp);
     } else {
-        // Significa que é o final da conversa para esta intention
-        // Aí renderiza o botão de finalizar a conversa        
+        removePreviousOptions();
+
         followUp.content[1].options.forEach(option => {
 
+            // Significa que é o final da conversa para esta intention
+            // Aí renderiza o botão de finalizar a conversa        
             if (option.type == 'end') {
                 startIntention(option['followUp']);
             } else {
                 const header = document.getElementById('chat-header');
                 let intention = getIntention(header['data-title']);
-                removePreviousOptions();
                 addOptions(option, intention['followUps'][option['followUp']]);
 
             }
