@@ -319,7 +319,7 @@ export function startFollowUp(followUp) {
             } else {
                 const header = document.getElementById('chat-header');
                 let intention = getIntention(header['data-title']);
-
+                removePreviousOptions();
                 addOptions(option, intention['followUps'][option['followUp']]);
 
             }
@@ -330,10 +330,9 @@ export function startFollowUp(followUp) {
 
 export function startIntention(key) {
     let intention = getIntention(key);
-
     const header = document.getElementById('chat-header');
     header['data-title'] = key;
-    header.innerHTML = intention.name;
+    header.innerHTML = "DRICA - " + intention.name;
 
     intention.speech.forEach(speech => {
         addBotMessage(speech);
@@ -355,9 +354,17 @@ export function insertContent(intention) {
         addBotMessage(element);
     });
 
+    removePreviousOptions();
     intention.content[1].options.forEach(option => {
         addOptions(option, intention['followUps'][option['followUp']]);
     });
+}
+
+export function removePreviousOptions() {
+    // Remove os botões anteriores
+    document.querySelectorAll('.chat-buttons').forEach(button => {
+        button.remove();
+    })
 }
 
 export function addOptions(option, followUp) {
@@ -368,7 +375,6 @@ export function addOptions(option, followUp) {
     button.addEventListener('click', () => {
         addUserInteraction(option.text);
         startFollowUp(followUp);
-        button.disabled = true;
     });
     chatLog.appendChild(button);
     chatLog.scrollTop = chatLog.scrollHeight;
@@ -386,23 +392,29 @@ export function addUserInteraction(interaction) {
 export function addBotMessage(speech) {
     const chatLog = document.getElementById('chat-log');
     const title = document.createElement('div');
+
     if (speech.type == 'image') {
         const image = document.createElement('img');
         image.src = speech.src;
         chatLog.appendChild(image);
     }
-    if (speech.type == 'link') {
-        const link = document.createElement('a');
-        link.href = speech.link;
-        link.textContent = speech.title;
-        link.target = '_blank';
-        chatLog.appendChild(link);
-    }
+
     title.classList.add(speech.type, 'message');
     let prefix = 'DRICA: '
 
-    title.textContent = prefix + speech.title;
+    if (speech.type == 'link') {
+        const link = document.createElement('a');
+        link.href = speech.link;
+        link.classList.add('link');
+        link.textContent = 'Acesse: ' + speech.title;
+        link.target = '_blank';
+        title.appendChild(link);
+    } else {
+        title.textContent = prefix + speech.title;
+    }
+
     chatLog.appendChild(title);
+
     if (speech.subtitle != null) {
         const subtitle = document.createElement('div');
         subtitle.classList.add('message');
@@ -413,4 +425,25 @@ export function addBotMessage(speech) {
     chatLog.scrollTop = chatLog.scrollHeight;
 }
 
-startIntention('saudacao');
+startIntention('saudacao')
+
+// simulateThinking(startIntention('saudacao'))
+
+// export function simulateThinking(cb) {
+
+//     const chatLog = document.getElementById('chat-log');
+//     const thinkingElement = document.createElement('div');
+//     thinkingElement.classList.add('thinking');
+//     thinkingElement.innerHTML = `
+//         <span></span>
+//         <span></span>
+//         <span></span>
+//     `;
+//     chatLog.appendChild(thinkingElement);
+
+//     // Simula o tempo de "pensamento"
+//     setTimeout(() => {
+//         chatLog.removeChild(thinkingElement);
+//         cb
+//     }, 2000); // Aguarda 2 segundos antes de exibir a resposta
+// }
