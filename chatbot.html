@@ -36,6 +36,7 @@
             padding: 10px;
             background-color: #e8f5e9;
             border-radius: 10px 10px 0 0;
+            margin-top: 40px;
         }
 
         .chat-buttons {
@@ -71,56 +72,14 @@
         }
 
         #chat-header {
+            position: fixed;
             background-color: #4caf50;
             color: white;
             padding: 10px;
             border-radius: 10px 10px 0 0;
             font-size: 18px;
             font-weight: bold;
-        }
-
-        /* Estilo para a animação de "pensamento" */
-        .thinking {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .thinking span {
-            display: inline-block;
-            background-color: #4caf50;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin: 0 2px;
-            opacity: 0;
-            animation: thinking 1s infinite;
-        }
-
-        .thinking span:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .thinking span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .thinking span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes thinking {
-            0% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
+            width: 100vw;
         }
     </style>
 </head>
