@@ -384,7 +384,7 @@ export function addOptions(option, followUp) {
 export function addUserInteraction(interaction) {
     const chatLog = document.getElementById('chat-log');
     const title = document.createElement('div');
-    title.classList.add('message');
+    title.classList.add('message-2');
     title.textContent = 'Você: ' + interaction;
     chatLog.appendChild(title);
     chatLog.scrollTop = chatLog.scrollHeight;
@@ -396,6 +396,7 @@ export function addBotMessage(speech) {
 
     if (speech.type == 'image') {
         const image = document.createElement('img');
+        image.classList.add('title-card-elements');
         image.src = speech.src;
         chatLog.appendChild(image);
     }
@@ -418,7 +419,7 @@ export function addBotMessage(speech) {
 
     if (speech.subtitle != null) {
         const subtitle = document.createElement('div');
-        subtitle.classList.add('message');
+        subtitle.classList.add('message', 'title-card-elements');
         subtitle.textContent = prefix + speech.subtitle;
         chatLog.appendChild(subtitle);
     }
