@@ -378,7 +378,6 @@ export function addOptions(option, followUp) {
         startFollowUp(followUp);
     });
     chatLog.appendChild(button);
-    chatLog.scrollTop = chatLog.scrollHeight;
 }
 
 export function addUserInteraction(interaction) {
@@ -387,7 +386,6 @@ export function addUserInteraction(interaction) {
     title.classList.add('message-2');
     title.textContent = 'Você: ' + interaction;
     chatLog.appendChild(title);
-    chatLog.scrollTop = chatLog.scrollHeight;
 }
 
 export function addBotMessage(speech) {
@@ -423,8 +421,6 @@ export function addBotMessage(speech) {
         subtitle.textContent = prefix + speech.subtitle;
         chatLog.appendChild(subtitle);
     }
-
-    chatLog.scrollTop = chatLog.scrollHeight;
 }
 
 startIntention('saudacao')
