@@ -304,7 +304,7 @@ let intentions = {
 
 export function startFollowUp(followUp) {
     followUp.speech.forEach(speech => {
-        addBotMessage(speech, false);
+        addBotMessage(speech);
     })
 
     if (followUp.content[0].length > 0) {
@@ -428,24 +428,3 @@ export function addBotMessage(speech) {
 }
 
 startIntention('saudacao')
-
-// simulateThinking(startIntention('saudacao'))
-
-// export function simulateThinking(cb) {
-
-//     const chatLog = document.getElementById('chat-log');
-//     const thinkingElement = document.createElement('div');
-//     thinkingElement.classList.add('thinking');
-//     thinkingElement.innerHTML = `
-//         <span></span>
-//         <span></span>
-//         <span></span>
-//     `;
-//     chatLog.appendChild(thinkingElement);
-
-//     // Simula o tempo de "pensamento"
-//     setTimeout(() => {
-//         chatLog.removeChild(thinkingElement);
-//         cb
-//     }, 2000); // Aguarda 2 segundos antes de exibir a resposta
-// }
