@@ -6,6 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot Simples</title>
     <style>
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            /* Distância da parte inferior da tela */
+            right: 20px;
+            /* Distância da parte direita da tela */
+            /* display: none; */
+            /* Escondido inicialmente */
+            background-color: #4caf50;
+            /* Cor de fundo */
+            color: white;
+            /* Cor do texto */
+            border: none;
+            border-radius: 50%;
+            padding: 10px 15px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            /* Efeito de sombra */
+            z-index: 1000;
+            /* Garante que o botão fique sobre outros elementos */
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-to-top:hover {
+            background-color: #97ec9a;
+            /* Cor ao passar o mouse */
+        }
+
         body {
             font-family: monospace;
             margin: 0;
@@ -167,8 +196,14 @@
     <div class="chat-container">
         <div id="chat-header"></div>
         <div class="chat-log" id="chat-log"></div>
+        <button class="scroll-to-top" id="btn-scroll">↑</button>
     </div>
     <script type="module" src="./index.js"></script>
+    <script>
+        document.querySelector("#btn-scroll").onclick = () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 
 </html>
