@@ -39,7 +39,22 @@
             font-family: monospace;
             margin: 0;
             padding: 0;
-            background-color: #f0f9f0;
+        }
+
+        #chatbot-icon {
+            position: fixed;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 24px;
         }
 
         .chat-container {
@@ -49,6 +64,8 @@
             background-color: #ffffff;
             margin: auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            position: absolute;
         }
 
         .link {
@@ -189,17 +206,34 @@
             width: 100%;
             text-wrap: balance;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
 <body>
-    <div class="chat-container">
+    <div id="chatbot-icon" class="chatbot-icon">&#128172;</div>
+
+    <div class="chat-container hidden">
         <div id="chat-header"></div>
         <div class="chat-log" id="chat-log"></div>
         <button class="scroll-to-top" id="btn-scroll">↑</button>
     </div>
     <script type="module" src="./index.js"></script>
     <script>
+        document.getElementById('chatbot-icon').addEventListener('click', () => {
+            document.querySelector('.chat-container').classList.toggle('hidden');
+
+            // Alterna ícone entre "abrir" e "fechar" (altere o ícone ou a aparência se quiser)
+            if (document.querySelector('.chat-container').classList.contains('hidden')) {
+                document.getElementById('chatbot-icon').innerHTML = '&#128172;';  // Ícone de chat (bolha de diálogo)
+            } else {
+                document.getElementById('chatbot-icon').innerHTML = '&#10006;';  // Ícone de fechar (X)
+            }
+        });
+
         document.querySelector("#btn-scroll").onclick = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
