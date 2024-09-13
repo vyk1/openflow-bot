@@ -22,7 +22,7 @@
             position: fixed;
         }
 
-        .scroll-to-top {
+        #scroll-to-top {
             position: fixed;
             bottom: 20px;
             /* Distância da parte inferior da tela */
@@ -46,9 +46,8 @@
             transition: opacity 0.3s ease;
         }
 
-        .scroll-to-top:hover {
+        #scroll-to-top:hover {
             background-color: #97ec9a;
-            /* Cor ao passar o mouse */
         }
 
         body {
@@ -75,7 +74,7 @@
             color: blue;
         }
 
-        .chat-log {
+        #chat-log {
             flex-grow: 1;
             padding: 10px;
             background-color: #e8f5e9;
@@ -264,27 +263,32 @@
 </head>
 
 <body>
-    <div id="chatbot-icon" class="chatbot-icon">&#128172;</div>
+    <div id="chatbot-icon">&#128172;</div>
 
     <div class="chat-container hidden">
         <div id="chat-header"></div>
-        <div class="chat-log" id="chat-log"></div>
-        <button class="scroll-to-top" id="btn-scroll">↑</button>
+        <div id="chat-log"></div>
+        <button id="scroll-to-top">↑</button>
     </div>
     <script type="module" src="./index.js"></script>
     <script>
         document.getElementById('chatbot-icon').addEventListener('click', () => {
             document.querySelector('.chat-container').classList.toggle('hidden');
 
-            // Alterna ícone entre "abrir" e "fechar" (altere o ícone ou a aparência se quiser)
+            // Alterna ícone entre "abrir" e "fechar"
             if (document.querySelector('.chat-container').classList.contains('hidden')) {
                 document.getElementById('chatbot-icon').innerHTML = '&#128172;';  // Ícone de chat (bolha de diálogo)
+                window.parent.document.querySelector('#drica-frame').style.height = '50px';
+                window.parent.document.querySelector('#drica-frame').style.width = '100%';  //
             } else {
+                window.parent.document.querySelector('#drica-frame').style.height = '550px';
+                window.parent.document.querySelector('#drica-frame').style.width = '100%';  //
+
                 document.getElementById('chatbot-icon').innerHTML = '&#10006;';  // Ícone de fechar (X)
             }
         });
 
-        document.querySelector("#btn-scroll").onclick = () => {
+        document.querySelector("#scroll-to-top").onclick = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
