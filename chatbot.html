@@ -19,6 +19,7 @@
             z-index: 1000;
             font-size: 24px;
             bottom: 0;
+            right: 0;
             position: fixed;
         }
 
@@ -61,7 +62,7 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
-            background-color: #ffffff;
+            background-color: #4caf50;
             margin: auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
@@ -78,7 +79,7 @@
             flex-grow: 1;
             padding: 10px;
             background-color: #e8f5e9;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
         .chat-buttons {
@@ -196,14 +197,13 @@
         }
 
         #chat-header {
+            background-color: #4caf50;
             border-radius: 12px 0px;
             position: fixed;
-            background-color: #4caf50;
             color: white;
             padding: 10px;
             font-size: 18px;
             font-weight: bold;
-            width: 100%;
             text-wrap: balance;
         }
 
@@ -281,9 +281,10 @@
                 window.parent.document.querySelector('#drica-frame').style.height = '50px';
                 window.parent.document.querySelector('#drica-frame').style.width = '100%';  //
             } else {
+                // Exibe o chatbot
                 window.parent.document.querySelector('#drica-frame').style.height = '550px';
                 window.parent.document.querySelector('#drica-frame').style.width = '100%';  //
-
+                document.getElementById('chatbot-icon').style.top = '0px';
                 document.getElementById('chatbot-icon').innerHTML = '&#10006;';  // Ícone de fechar (X)
             }
         });
