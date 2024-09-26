@@ -122,6 +122,11 @@ let intentions = {
                             {
                                 "text": "Mais sobre assédio",
                                 "followUp": "violencia-assedio"
+                            },
+                            {
+                                "text": "Diferenças entre assédio e discriminação",
+                                "followUp": "violencia-diferencas",
+                                "type": "next",
                             }
                         ]
                     }
@@ -318,6 +323,9 @@ export function startFollowUp(followUp) {
             // Aí renderiza o botão de finalizar a conversa        
             if (option.type == 'end') {
                 startIntention(option['followUp']);
+                // se for btn para outra intention
+            } else if (option.type == 'next') {
+                createIntetionButton(option['followUp'], option);
             } else {
                 const header = document.getElementById('chat-header');
                 let intention = getIntention(header['data-title']);
@@ -328,6 +336,18 @@ export function startFollowUp(followUp) {
 
     }
 }
+
+export function createIntetionButton(key, option) {
+    const chatLog = document.getElementById('chat-log');
+    const button = document.createElement('button');
+    button.textContent = option.text;
+    button.classList.add('chat-buttons', 'chat-button');
+    button.addEventListener('click', () => {
+        startIntention(key);
+    });
+    chatLog.appendChild(button);
+}
+
 
 export function startIntention(key) {
     let intention = getIntention(key);
