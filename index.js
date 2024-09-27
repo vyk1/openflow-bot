@@ -253,32 +253,18 @@ let intentions = {
                     {
                         "options": [
                             {
-                                "text": "Denunciar",
-                                "followUp": "violencia-diferencas-acao-denunciar"
+                                "text": "Vítimas",
+                                "followUp": "acao-vitimas",
+                                "type": "next"
                             },
-                            {
-                                "text": "Apoiar",
-                                "followUp": "violencia-diferencas-acao-apoiar"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "violencia-diferencas-acao-denunciar": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Denunciar é um ato de coragem e solidariedade",
-                    },
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Apoiar",
-                                "followUp": "violencia-diferencas-acao-apoiar"
-                            }
+                            // {
+                            //     "text": "Testemunhas",
+                            //     "followUp": "acao-testemunhas"
+                            // },
+                            // {
+                            //     "text": "Gestores",
+                            //     "followUp": "acao-gestores"
+                            // }
                         ]
                     }
                 ]
@@ -303,11 +289,257 @@ let intentions = {
                 ]
             }
         }
+    },
+    "acao-vitimas": {
+        "name": "Ação para vítimas",
+        "speech": [
+            {
+                "type": "info",
+                "title": "Você foi a vítima. E agora?",
+            },
+        ],
+        "content": [
+            [
+                {
+                    "title": "Em primeiro lugar, livre-se do sentimento de culpa, uma vez que a irregularidade da conduta não depende do comportamento da vítima, mas sim do agressor.",
+                    "type": "text",
+                },
+                {
+                    "title": "Portanto, em não se cale!",
+                    "subtitle": "Deixe claro ao assediador que você não tolera tal comportamento e que a ação se configura como assédio. Diga, claramente, NÃO ao assediador. Rompa o silêncio e busque o auxílio de outras pessoas.",
+                    "type": "info",
+                },
+                {
+                    "title": "Evite conversar e permanecer sozinho(a), sem testemunhas, com o(a) assediador(a)?",
+                    "type": "text",
+                },
+                {
+                    "title": "Peça a um colega que observe a conduta do (a) assediador(a) em relação a você",
+                    "type": "text",
+                },
+                {
+                    "title": "Após identificar o tipo de violência sofrido, confira o que pode ser feito em cada caso",
+                    "type": "text",
+                }
+            ],
+            {
+                "options": [
+                    {
+                        "text": "Ainda não compreendi as diferenças entre assédio e discriminação",
+                        "followUp": "violencia-diferencas",
+                        "type": "next"
+                    },
+                    {
+                        "text": "Assédio",
+                        "followUp": "acao-vitima-assedio",
+                        "type": "next"
+                    },
+                    // {
+                    //     "text": "Discriminação",
+                    //     "followUp": "acao-vitima-discriminacao",
+                    //     "type": "next"
+                    // },
+                    // {
+                    //     "text": "Importunação",
+                    //     "followUp": "acao-vitima-importunacao",
+                    //     "type": "next"
+                    // }
+                ]
+            }
+        ],
+        "followUps": {
+            "violencia-diferencas": {
+                "speech": [
+                    {
+                        "type": "info",
+                        "title": "Diferenças entre assédio e discriminação",
+                    },
+                ],
+                "content": [
+                    [],
+                    {
+                        "options": [
+                            {
+                                "text": "Continuar",
+                                "followUp": "violencia-diferencas",
+                                "type": "next"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "acao-vitima-assedio": {
+                "speech": [
+                    {
+                        "type": "info",
+                        "title": "Ação para vítimas de assédio",
+                    }
+                ],
+                "content": [
+                    [],
+                    {
+                        "options": [
+                            {
+                                "text": "Continuar",
+                                "followUp": "acao-vitima-assedio",
+                                "type": "end"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "acao-vitima-assedio": {
+        "name": "Ação para vítimas de assédio",
+        "speech": [
+            {
+                "type": "info",
+                "title": "O que fazer em caso de assédio?",
+            },
+        ],
+        "content": [
+            [],
+            {
+                "options": [
+                    {
+                        "text": "Denunciar na polícia civil",
+                        "followUp": "acao-vitima-assedio-denunciar-policia",
+                    },
+                    {
+                        "text": "Denunciar na ouvidoria",
+                        "followUp": "acao-vitima-assedio-denunciar-ouvidoria",
+                    },
+                    {
+                        "text": "Buscar acolhimento",
+                        "followUp": "acao-vitima-assedio-acolhimento",
+                    },
+                    {
+                        "text": "Buscar outros serviços",
+                        "followUp": "acao-vitima-assedio-outros-servicos",
+                    },
+                    {
+                        "text": "Voltar",
+                        "followUp": "voltar-acao-vitima",
+                    }
+                ]
+            }
+        ],
+        "followUps": {
+            "acao-vitima-assedio-denunciar-policia": {
+                "speech": [
+                    {
+                        "type": "info",
+                        "title": "Denunciar na polícia civil",
+                    }
+                ],
+                "content": [
+                    [],
+                    {
+                        "options": [
+                            {
+                                "text": "Continuar",
+                                "followUp": "acao-vitima-assedio",
+                                "type": "end"
+                            }
+                        ]
+                    }
+                ],
+                "followUps": {}
+            },
+            "acao-vitima-assedio-denunciar-ouvidoria": {
+                "speech": [
+                    {
+                        "type": "info",
+                        "title": "Denunciar na ouvidoria",
+                        "subtitle": "Caso o assédio ocorra no ambiente de trabalho, a denúncia pode ser feita na ouvidoria da instituição."
+                    }
+                ],
+                "content": [
+                    [],
+                    {
+                        "options": [
+                            {
+                                "text": "Continuar",
+                                "followUp": "acao-vitima-assedio",
+                                "type": "end"
+                            }
+                        ]
+                    }
+                ],
+                "followUps": {}
+
+            },
+            "acao-vitima-assedio-acolhimento": {
+                "speech": [
+                    {
+                        "type": "info",
+                        "title": "Buscar acolhimento",
+                        "subtitle": "Procure apoio de amigos e familiares, além de profissionais de saúde mental."
+                    }
+                ],
+                "content": [
+                    [],
+                    {
+                        "options": [
+                            {
+                                "text": "Continuar",
+                                "followUp": "acao-vitima-assedio",
+                                "type": "end"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "acao-vitima-assedio-outros-servicos": {
+                "speech": [
+                    {
+                        "type": "info",
+                        "title": "Buscar outros serviços",
+                        "subtitle": "Existem diversos serviços de apoio à vítimas de violência, como o Centro de Referência de Atendimento à Mulher (CRAM) e o Centro de Referência Especializado de Assistência Social (CREAS)."
+                    }
+                ],
+                "content": [
+                    [],
+                    {
+                        "options": [
+                            {
+                                "text": "Continuar",
+                                "followUp": "acao-vitima-assedio",
+                                "type": "end"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "voltar-acao-vitima": {
+                "speech": [
+                    {
+                        "type": "info",
+                        "title": "Voltar",
+                    }
+                ],
+                "content": [
+                    [],
+                    {
+                        "options": [
+                            {
+                                "text": "Voltar",
+                                "followUp": "acao-vitima-assedio",
+                                "type": "next"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
     }
 }
 
 
 export function startFollowUp(followUp) {
+    console.log(followUp);
+
     followUp.speech.forEach(speech => {
         addBotMessage(speech);
     })
@@ -395,6 +627,8 @@ export function addOptions(option, followUp) {
     button.classList.add('chat-buttons', 'chat-button');
     button.addEventListener('click', () => {
         addUserInteraction(option.text);
+        console.log(option.text);
+
         startFollowUp(followUp);
     });
     chatLog.appendChild(button);
