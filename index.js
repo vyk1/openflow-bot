@@ -421,6 +421,10 @@ let intentions = {
                     {
                         "text": "Voltar",
                         "followUp": "voltar-acao-vitima",
+                    },
+                    {
+                        "text": "Despedir-se",
+                        "followUp": "despedida",
                     }
                 ]
             }
@@ -430,22 +434,58 @@ let intentions = {
                 "speech": [
                     {
                         "type": "info",
-                        "title": "Denunciar na polícia civil",
+                        "title": "Primeiro você vai precisar coletar as provas",
                     }
                 ],
                 "content": [
-                    [],
+                    [
+                        {
+                            "type": "info",
+                            "title": "Após coletar as informações, formalize a sua denúncia em uma delegacia mais próxima de você ou faça pelo site da Polícia Civil.",
+                        },
+                        {
+                            "link": "https://delegaciavirtual.sc.gov.br",
+                            "type": "link",
+                            "title": "Delegacia Virtual"
+                        },
+                        {
+                            "type": "link",
+                            "title": "Procurar delegacia perto de mim",
+                            "link": "https://www.pc.sc.gov.br/delegacias"
+                        }
+                    ],
                     {
                         "options": [
                             {
-                                "text": "Continuar",
-                                "followUp": "acao-vitima-assedio",
+                                "text": "Voltar",
+                                "followUp": "voltar-acao-assedio",
                                 "type": "end"
                             }
                         ]
                     }
                 ],
-                "followUps": {}
+                "followUps": {
+                    "voltar-acao-assedio": {
+                        "speech": [
+                            {
+                                "type": "info",
+                                "title": "Voltar",
+                            }
+                        ],
+                        "content": [
+                            [],
+                            {
+                                "options": [
+                                    {
+                                        "text": "Voltar",
+                                        "followUp": "acao-vitima-assedio",
+                                        "type": "end"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
             },
             "acao-vitima-assedio-denunciar-ouvidoria": {
                 "speech": [
@@ -525,10 +565,53 @@ let intentions = {
                         "options": [
                             {
                                 "text": "Voltar",
-                                "followUp": "acao-vitima-assedio",
-                                "type": "next"
+                                "followUp": "acao-vitimas",
+                                "type": "end"
                             }
                         ]
+                    }
+                ]
+            },
+            "despedida": {
+                "speech": [
+                    {
+                        "type": "info",
+                        "title": "Obrigada por usar a DRICA!",
+                    }
+                ],
+                "content": [
+                    [
+                        {
+                            "type": "info",
+                            "title": "Se precisar de mais informações, estarei por aqui.",
+                        },
+                        {
+                            "type": "link",
+                            "title": "Mais informações",
+                            "link": "https://www.cge.sc.gov.br/combateaoassedio/"
+                        },
+                        {
+                            "type": "link",
+                            "title": "Entrar em contato",
+                            "link": "mailto:dic@cge.sc.gov.br"
+                        },
+                        {
+                            "type": "link",
+                            "title": "Avaliar a DRICA",
+                            "link": "https://forms.gle/"
+                        },
+                        {
+                            "type": "link",
+                            "title": "Site da CGE SC",
+                            "link": "https://www.cge.sc.gov.br/"
+                        },
+                        {
+                            "type": "info",
+                            "title": "Até mais!"
+                        }
+                    ],
+                    {
+                        "options": []
                     }
                 ]
             }
@@ -538,8 +621,6 @@ let intentions = {
 
 
 export function startFollowUp(followUp) {
-    console.log(followUp);
-
     followUp.speech.forEach(speech => {
         addBotMessage(speech);
     })
