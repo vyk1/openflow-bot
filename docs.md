@@ -57,6 +57,7 @@ followUps é
 
 É recomendado que cada ação tenha no máximo 200 caracteres para que o balão de conversa não fique muito grande.
 
+> "end vs "next"
+* use "end" para finalizar um diálogo e já encaminhar para a próxima intenção (sem botão)
 
 * "followUps" não podem estar vazios
-
