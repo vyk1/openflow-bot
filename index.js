@@ -1,3 +1,18 @@
+/**
+ * Estrutura de intenções do chatbot. Cada intenção possui um nome, falas, conteúdos e ramificações de seguimento.
+ * 
+ * @typedef {Object} Intention
+ * @property {string} name - Nome da intenção, representando o propósito ou tópico.
+ * @property {Array<Object>} speech - Uma lista de falas que o chatbot irá pronunciar.
+ * @property {Array<Object>} content - Conteúdo adicional que pode ser exibido, como opções e informações.
+ * @property {Object} followUps - Opções de seguimento que levam a novas intenções, baseadas na escolha do usuário.
+ */
+
+/**
+ * Estrutura geral contendo todas as intenções do chatbot.
+ * 
+ * @type {Object<string, Intention>}
+ */
 let intentions = {
     "saudacao": {
         "name": "Saudação",
