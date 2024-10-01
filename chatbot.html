@@ -272,6 +272,15 @@
     </div>
     <script type="module" src="./index.js"></script>
     <script>
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                document.querySelector('.chat-container').classList.add('hidden');
+                document.getElementById('chatbot-icon').innerHTML = '&#128172;';  // Ícone de chat (bolha de diálogo)
+                window.parent.document.querySelector('#drica-frame').style.height = '50px';
+                window.parent.document.querySelector('#drica-frame').style.width = '100%';
+            }
+        });
+        
         document.getElementById('chatbot-icon').addEventListener('click', () => {
             document.querySelector('.chat-container').classList.toggle('hidden');
 
