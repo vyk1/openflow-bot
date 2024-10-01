@@ -33,13 +33,13 @@ let intentions = {
             {
                 "options": [
                     {
+                        "text": "Não sei o que é um bot",
+                        "followUp": "nao-sei-bot"
+                    },
+                    {
                         "text": "Sei o que é um bot",
                         "followUp": "sei-bot"
                     },
-                    {
-                        "text": "Não sei o que é um bot",
-                        "followUp": "nao-sei-bot"
-                    }
                 ]
             }
         ],
@@ -135,14 +135,14 @@ let intentions = {
                     {
                         "options": [
                             {
-                                "text": "Mais sobre assédio",
-                                "followUp": "violencia-assedio"
-                            },
-                            {
                                 "text": "Diferenças entre assédio e discriminação",
                                 "followUp": "violencia-diferencas",
                                 "type": "next",
-                            }
+                            },
+                            {
+                                "text": "Mais sobre assédio",
+                                "followUp": "violencia-assedio"
+                            },
                         ]
                     }
                 ]
@@ -160,6 +160,10 @@ let intentions = {
                     {
                         "options": [
                             {
+                                "text": "Mais sobre discriminação",
+                                "followUp": "violencia-discriminacao"
+                            },
+                            {
                                 "text": "Assédio moral",
                                 "followUp": "violencia-assedio-moral"
                             },
@@ -167,10 +171,6 @@ let intentions = {
                                 "text": "Assédio sexual",
                                 "followUp": "violencia-assedio-sexual"
                             },
-                            {
-                                "text": "Mais sobre discriminação",
-                                "followUp": "violencia-discriminacao"
-                            }
                         ]
                     }
                 ],
@@ -212,6 +212,11 @@ let intentions = {
                     {
                         "options": [
                             {
+                                "text": "Diferenças entre assédio e discriminação",
+                                "followUp": "violencia-diferencas",
+                                "type": "next",
+                            },
+                            {
                                 "text": "Assédio moral",
                                 "followUp": "violencia-assedio-moral"
                             },
@@ -219,11 +224,6 @@ let intentions = {
                                 "text": "Mais sobre discriminação",
                                 "followUp": "violencia-discriminacao"
                             },
-                            {
-                                "text": "Diferenças entre assédio e discriminação",
-                                "followUp": "violencia-diferencas",
-                                "type": "next",
-                            }
                         ]
                     }
                 ]
@@ -377,7 +377,7 @@ let intentions = {
                             {
                                 "text": "Continuar",
                                 "followUp": "violencia-diferencas",
-                                "type": "next"
+                                "type": "end"
                             }
                         ]
                     }
@@ -727,7 +727,7 @@ export function addOptions(option, followUp) {
     if (option.type == 'next') {
         button.classList.add('btn-next');
     }
-    
+
     button.addEventListener('click', () => {
         addUserInteraction(option.text);
         startFollowUp(followUp);
@@ -738,7 +738,7 @@ export function addOptions(option, followUp) {
 export function addUserInteraction(interaction) {
     const chatLog = document.getElementById('chat-log');
     const title = document.createElement('div');
-    title.classList.add('message-2');
+    title.classList.add('message-user');
     title.textContent = 'Você: ' + interaction;
     chatLog.appendChild(title);
 }
@@ -754,7 +754,7 @@ export function addBotMessage(speech) {
         chatLog.appendChild(image);
     }
 
-    title.classList.add(speech.type, 'message');
+    title.classList.add(speech.type, 'message-bot');
     let prefix = 'DRICA: '
 
     if (speech.type == 'link') {
@@ -772,7 +772,7 @@ export function addBotMessage(speech) {
 
     if (speech.subtitle != null) {
         const subtitle = document.createElement('div');
-        subtitle.classList.add('message', 'title-card-elements');
+        subtitle.classList.add('message-bot', 'title-card-elements');
         subtitle.textContent = prefix + speech.subtitle;
         chatLog.appendChild(subtitle);
     }
