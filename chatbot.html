@@ -94,8 +94,16 @@
             transition: background-color 0.3s ease;
         }
 
+        .btn-end {
+            background-color: #36d8f4;
+        }
+
+        .btn-next {
+            background-color: #90a121;
+        }
+
         .chat-buttons:hover {
-            background-color: #45a049;
+            background-color: rgba(0, 0, 0, 0.1);
         }
 
         .message {
@@ -162,6 +170,7 @@
         }
 
         .message-2 {
+            font-weight: bold;
             background: white;
             background-color: white;
             border: 1px solid #e0e0e0;
@@ -280,7 +289,7 @@
                 window.parent.document.querySelector('#drica-frame').style.width = '100%';
             }
         });
-        
+
         document.getElementById('chatbot-icon').addEventListener('click', () => {
             document.querySelector('.chat-container').classList.toggle('hidden');
 
