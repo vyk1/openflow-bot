@@ -97,7 +97,7 @@ let intentions = {
             {
                 "type": "info",
                 "title": "Você sabia que violência no trabalho, não é só fisica?",
-                "subtitle": "O Manual de Saúde e Segurança do Servidor Público de Santa Catarina define a violência no ambiente de trabalho como toda e qualquer ação ou comportamento, explícito ou sutil, que resulte em agressão, humilhação ou ameaça ao servidor ou aos indivíduos relacionados a ele.\n\nDesta forma, a violência no trabalho pode se manifestar em diferentes formas."
+                "subtitle": "O Manual de Saúde e Segurança de SC define violência no trabalho como ação ou comportamento que cause agressão, humilhação ou ameaça ao servidor ou relacionados."
             }
         ],
         "content": [
@@ -222,7 +222,7 @@ let intentions = {
                             {
                                 "text": "Diferenças entre assédio e discriminação",
                                 "followUp": "violencia-diferencas",
-                                "type": "end",
+                                "type": "next",
                             }
                         ]
                     }
@@ -449,58 +449,37 @@ let intentions = {
                 "speech": [
                     {
                         "type": "info",
-                        "title": "Primeiro você vai precisar coletar as provas",
+                        "title": "Primeiro, você vai precisar coletar as provas",
+                        "subtitle": "Anote datas, horários, locais, testemunhas e outras informações que possam ajudar a esclarecer o caso."
+                    },
+                    {
+                        "type": "info",
+                        "title": "Após coletar as informações, formalize a sua denúncia em uma delegacia mais próxima de você ou faça pelo site da Polícia Civil.",
+                    },
+                    {
+                        "link": "https://delegaciavirtual.sc.gov.br",
+                        "type": "link",
+                        "title": "Delegacia Virtual"
+                    },
+                    {
+                        "type": "link",
+                        "title": "Procurar delegacia perto de mim",
+                        "link": "https://www.pc.sc.gov.br/delegacias"
                     }
                 ],
                 "content": [
-                    [
-                        {
-                            "type": "info",
-                            "title": "Após coletar as informações, formalize a sua denúncia em uma delegacia mais próxima de você ou faça pelo site da Polícia Civil.",
-                        },
-                        {
-                            "link": "https://delegaciavirtual.sc.gov.br",
-                            "type": "link",
-                            "title": "Delegacia Virtual"
-                        },
-                        {
-                            "type": "link",
-                            "title": "Procurar delegacia perto de mim",
-                            "link": "https://www.pc.sc.gov.br/delegacias"
-                        }
-                    ],
+                    [],
                     {
                         "options": [
                             {
-                                "text": "Voltar",
-                                "followUp": "voltar-acao-assedio",
+                                "text": "Continuar",
+                                "followUp": "acao-vitima-assedio",
                                 "type": "end"
                             }
                         ]
                     }
                 ],
-                "followUps": {
-                    "voltar-acao-assedio": {
-                        "speech": [
-                            {
-                                "type": "info",
-                                "title": "Voltar",
-                            }
-                        ],
-                        "content": [
-                            [],
-                            {
-                                "options": [
-                                    {
-                                        "text": "Voltar",
-                                        "followUp": "acao-vitima-assedio",
-                                        "type": "end"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                }
+                "followUps": {}
             },
             "acao-vitima-assedio-denunciar-ouvidoria": {
                 "speech": [
@@ -634,7 +613,10 @@ let intentions = {
     }
 }
 
-
+/**
+ * 
+ * @param {FollowUp} followUp 
+ */
 export function startFollowUp(followUp) {
     followUp.speech.forEach(speech => {
         addBotMessage(speech);
@@ -665,11 +647,28 @@ export function startFollowUp(followUp) {
     }
 }
 
+/**
+ *  Cria um botão de intenção
+ * @param {string} key - Chave da intenção
+ * @param {Option} option - Opção de seguimento
+ * @returns {void}
+ * 
+ */
+
 export function createIntetionButton(key, option) {
     const chatLog = document.getElementById('chat-log');
     const button = document.createElement('button');
-    button.textContent = option.text;
     button.classList.add('chat-buttons', 'chat-button');
+
+    if (option.type == 'end') {
+        button.classList.add('btn-end');
+    }
+
+    if (option.type == 'next') {
+        button.classList.add('btn-next');
+    }
+
+    button.textContent = option.text;
     button.addEventListener('click', () => {
         startIntention(key);
     });
@@ -721,10 +720,16 @@ export function addOptions(option, followUp) {
     const button = document.createElement('button');
     button.textContent = option.text;
     button.classList.add('chat-buttons', 'chat-button');
+    if (option.type == 'end') {
+        button.classList.add('btn-end');
+    }
+
+    if (option.type == 'next') {
+        button.classList.add('btn-next');
+    }
+    
     button.addEventListener('click', () => {
         addUserInteraction(option.text);
-        console.log(option.text);
-
         startFollowUp(followUp);
     });
     chatLog.appendChild(button);
