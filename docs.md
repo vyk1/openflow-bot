@@ -1,75 +1,164 @@
-# Documentação da Estrutura JSON para Respostas do Chatbot DRICA
+### Documentação: Como Desenvolver o JSON para o Chatbot
 
-Este documento descreve a estrutura JSON utilizada para definir as intenções e as respostas que o chatbot <strong>DRICA</strong> irá apresentar aos usuários. A <strong>DRICA</strong> tem como foco auxiliar na prevenção e orientação sobre violência no trabalho no setor público.
+Este guia foi criado para que qualquer pessoa, mesmo sem conhecimento técnico profundo, consiga entender e desenvolver o JSON do chatbot de forma simples e eficaz.
 
-## Estrutura Geral
-A estrutura JSON segue uma organização hierárquica em que as <strong>intenções</strong> (intents) são os
-        principais nós de diálogo, e dentro de cada uma, temos <strong>mensagens de fala</strong> (speech),
-        <strong>conteúdos</strong> (content), e <strong>opções de seguimento</strong> (followUps). Cada intenção pode
-ter diversas ramificações baseadas nas escolhas feitas pelo usuário.
+### Estrutura Básica de uma Intenção (Intention)
+Uma **intenção** no chatbot é o tópico ou propósito de uma conversa. Quando o usuário interage com o chatbot, ele escolhe opções e segue para diferentes intenções. Cada intenção tem falas, conteúdos adicionais (como botões), e pode ter seguimentos (ou **follow-ups**).
 
-### Intenções
-Cada intenção corresponde a um tópico específico ou uma pergunta a ser tratada pelo chatbot. As intenções estão
-        divididas em categorias com os seguintes campos:
-    <ul>
-        <li><strong>name</strong>: O nome da intenção (para fins de identificação).</li>
-        <li><strong>speech</strong>: Um array de objetos que contém a resposta textual ou visual do chatbot.</li>
-        <li><strong>content</strong>: Define as opções que o usuário pode escolher e outros tipos de conteúdo
-            complementar.</li>
-        <li><strong>followUps</strong>: As intenções de seguimento, que especificam as respostas e opções subsequentes
-            dependendo da escolha do usuário.</li>
-    </ul>
-
-Content é um array com 2 elementos
-* O primeiro é oum array com um único elemento que é o diálogo inicial
-* O segundo é um objeto "options" que é um array com n elementos e representa os botões de resposta
-
-
-followUps é 
-
-
-
+#### Exemplo Básico de Estrutura:
 ```json
-"content": [
-    [
-        {
-            "title": "Me diga, você sabe o que é um \"bot\"?",
-            "type": "info"
-        }
-    ],
+{
+  "name": "BoasVindas",
+  "speech": ["Olá, seja bem-vindo! Como posso ajudar?"],
+  "content": [
     {
-        "options": [
-            {
-                "text": "Sei o que é um bot",
-                "followUp": "sei-bot"
-            },
-            {
-                "text": "Não sei o que é um bot",
-                "followUp": "nao-sei-bot"
-            }
-        ]
+      "type": "info",
+      "title": "Aqui estão as opções disponíveis"
+    },
+    {
+      "options": [
+        { "text": "Quero saber mais", "followUp": "SaberMais", "type": "next" },
+        { "text": "Finalizar", "followUp": "Despedida", "type": "end" }
+      ]
     }
-],
+  ],
+  "followUps": {
+    "SaberMais": { "type": "next" },
+    "Despedida": { "type": "end" }
+  }
+}
 ```
 
+### Passo a Passo para Criar o JSON do Chatbot
 
-## Desenvolvendo um diálogo
+#### 1. **Criar uma Nova Intenção**
+Cada **intenção** é uma nova parte da conversa do bot. Você deve começar criando um nome único para essa intenção, que vai identificar o tópico ou o que o bot vai falar.
 
-É recomendado que cada ação tenha no máximo 150 caracteres para que o balão de conversa não fique muito grande.
+- O nome da intenção vai no campo `"name"`.
+- **Exemplo**:
+  ```json
+  "name": "BoasVindas"
+  ```
 
+#### 2. **Adicionar o Texto Inicial (Speech)**
+No campo `"speech"`, você coloca o que o bot vai dizer primeiro. Esta é a mensagem que aparecerá na tela do usuário assim que a intenção for ativada.
 
-### Botões (interações/ações) "end vs "next"
+- **Dica**: Limite o texto a **150 caracteres** para que o balão de fala não fique muito grande.
+- **Exemplo**:
+  ```json
+  "speech": ["Olá, seja bem-vindo! Como posso ajudar?"]
+  ```
 
-- Coloque os botões com mais texto primeiro
+#### 3. **Adicionar Conteúdos Opcionais**
+O campo `"content"` é onde você pode adicionar informações adicionais que o bot vai exibir, como textos, imagens ou botões de opções.
 
-End:
-- use "end" para finalizar um diálogo e já encaminhar para a próxima intenção (sem botão)
-- Este botão não é renderizado
+- **content[0]**: É onde você pode adicionar mais diálogos ou informações que serão exibidas para o usuário.
+- **content[1]**: Aqui você pode colocar as **opções de botão** que o usuário vai ver e poderá escolher.
 
-Next:
-- use "next" para permitir a renderização do botão 
+- **Exemplo**:
+  ```json
+  "content": [
+    {
+      "type": "info",
+      "title": "Aqui estão as opções disponíveis"
+    },
+    {
+      "options": [
+        { "text": "Quero saber mais", "followUp": "SaberMais", "type": "next" },
+        { "text": "Finalizar", "followUp": "Despedida", "type": "end" }
+      ]
+    }
+  ]
+  ```
 
-* "followUps" podem estar vazios
+#### 4. **Adicionar Botões de Ação (Opcional)**
+Se você quiser adicionar botões de opções para o usuário clicar, insira-os dentro do campo `content[1].options`. Cada botão deve ter:
+- **Texto** (`text`): O que vai aparecer no botão.
+- **Seguimento** (`followUp`): Qual intenção ou ação será seguida ao clicar no botão.
+- **Tipo** (`type`): Define se o botão termina a conversa (`"end"`) ou continua com uma nova interação (`"next"`).
 
-Se você quiser cadastrar um follow up que pode ter um botão de encerrar "end", você deve ter um objeto no content[0]
+- **Exemplo**:
+  ```json
+  {
+    "text": "Quero saber mais",
+    "followUp": "SaberMais",
+    "type": "next"
+  }
+  ```
 
+#### 5. **Adicionar Follow-ups**
+Os **follow-ups** são as ramificações da conversa, ou seja, o que acontece depois que o usuário clica em uma das opções. Se o follow-up levar a uma nova intenção, ele pode ter dois tipos:
+- **"next"**: Renderiza o botão e segue para a próxima intenção.
+- **"end"**: Não renderiza o botão e encerra a conversa ou redireciona para outra parte da interação.
+
+- **Exemplo**:
+  ```json
+  "followUps": {
+    "SaberMais": { "type": "next" },
+    "Despedida": { "type": "end" }
+  }
+  ```
+
+### Dicas Importantes
+
+1. **Limite de Caracteres**: 
+   - As respostas do bot devem ter no máximo **150 caracteres** para manter o layout organizado e legível.
+  
+2. **Organização dos Botões**:
+   - Coloque os botões com **mais texto primeiro**. Isso melhora a legibilidade e experiência do usuário.
+
+3. **Interações (End vs Next)**:
+   - **End**: Quando você quer que a conversa termine sem renderizar o botão.
+   - **Next**: Quando você quer permitir que o botão seja mostrado e o usuário clique para continuar.
+
+### Estruturas Detalhadas
+
+#### Intention (Intenção)
+```json
+{
+  "name": "NomeDaIntencao",
+  "speech": ["Texto inicial que o bot irá falar"],
+  "content": [
+    {
+      "type": "info",
+      "title": "Texto opcional que pode aparecer abaixo da fala do bot"
+    },
+    {
+      "options": [
+        { "text": "Texto do botão", "followUp": "ChaveDoFollowUp", "type": "next" }
+      ]
+    }
+  ],
+  "followUps": {
+    "ChaveDoFollowUp": { "type": "next" }
+  }
+}
+```
+
+#### Exemplo Completo
+Aqui está um exemplo completo de um diálogo onde o bot saúda o usuário e oferece opções para continuar ou encerrar a conversa:
+```json
+{
+  "name": "BoasVindas",
+  "speech": ["Olá, seja bem-vindo! Como posso ajudar?"],
+  "content": [
+    {
+      "type": "info",
+      "title": "Aqui estão as opções disponíveis"
+    },
+    {
+      "options": [
+        { "text": "Quero saber mais", "followUp": "SaberMais", "type": "next" },
+        { "text": "Finalizar", "followUp": "Despedida", "type": "end" }
+      ]
+    }
+  ],
+  "followUps": {
+    "SaberMais": { "type": "next" },
+    "Despedida": { "type": "end" }
+  }
+}
+```
+
+### Conclusão
+Com essa documentação, mesmo alguém leigo poderá construir a estrutura de intenções do chatbot, personalizar diálogos e interações e desenvolver novas conversas de forma simples e eficaz.
