@@ -660,9 +660,6 @@ export function createIntetionButton(key, option) {
     const button = document.createElement('button');
     button.classList.add('chat-buttons', 'chat-button');
 
-    if (option.type == 'end') {
-        button.classList.add('btn-end');
-    }
 
     if (option.type == 'next') {
         button.classList.add('btn-next');
@@ -720,9 +717,6 @@ export function addOptions(option, followUp) {
     const button = document.createElement('button');
     button.textContent = option.text;
     button.classList.add('chat-buttons', 'chat-button');
-    if (option.type == 'end') {
-        button.classList.add('btn-end');
-    }
 
     if (option.type == 'next') {
         button.classList.add('btn-next');
