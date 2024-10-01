@@ -1,18 +1,40 @@
+
 /**
  * Estrutura de intenções do chatbot. Cada intenção possui um nome, falas, conteúdos e ramificações de seguimento.
  * 
  * @typedef {Object} Intention
- * @property {string} name - Nome da intenção, representando o propósito ou tópico.
- * @property {Array<Object>} speech - Uma lista de falas que o chatbot irá pronunciar.
- * @property {Array<Object>} content - Conteúdo adicional que pode ser exibido, como opções e informações.
- * @property {Object} followUps - Opções de seguimento que levam a novas intenções, baseadas na escolha do usuário.
+ * @property {string} name - Nome da intenção, representando o propósito ou tópico. Aparecerá no header do chatbot.
+ * @property {Array<Dialog>} speech - Uma lista de falas que o chatbot irá pronunciar.
+ * @property {Content} content - Conteúdo adicional que pode ser exibido, como opções e informações.
+ * @property {FollowUps} followUps - Opções de seguimento que levam a novas intenções, baseadas na escolha do usuário.
  */
 
 /**
- * Estrutura geral contendo todas as intenções do chatbot.
- * 
- * @type {Object<string, Intention>}
+ * Estrutura de diálogo do chatbot. Cada diálogo possui um tipo e um conteúdo.
+ * @typedef {Object} Dialog
+ * @property {string} type - Tipo do diálogo, podendo ser "info", "image" ou "link".
+ * @property {string} title - Conteúdo do diálogo.
+ * @property {string} [subtitle] - Subtítulo do diálogo, opcional.
+ * @property {string} [src] - URL da imagem, opcional. Obrigatório se o tipo for "image".
+ * @property {string} [link] - URL do link, opcional. Obrigatório se o tipo for "link".
  */
+
+/**
+ * Estrutura de conteúdo adicional do chatbot. Cada conteúdo possui uma lista de diálogos e opções.
+ * @typedef {Object} Content
+ * @property {Array<Dialog>} 0 - Lista de diálogos que serão exibidos.
+ * @property {Array<Option>} 1 - Opções que o usuário pode escolher.
+ */
+
+/**
+ * Estrutura de opções do chatbot. Cada opção possui um texto, uma chave de seguimento e talvez um tipo.
+ * @typedef {Object} Option
+ * @property {string} text - Texto da opção.
+ * @property {string} followUp - Chave da intenção/followUp que será seguida ao escolher a opção.
+ * @property {string} [type] - Tipo da opção, podendo ser "next" ou "end". Use "next" ou "end" apenas se o followUp for uma intenção. Caso contrário, e for uma followUp irmã, não é necessário.
+ */
+
+
 let intentions = {
     "saudacao": {
         "name": "Saudação",
