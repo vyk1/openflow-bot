@@ -55,9 +55,17 @@ followUps é
 
 ## Desenvolvendo um diálogo
 
-É recomendado que cada ação tenha no máximo 200 caracteres para que o balão de conversa não fique muito grande.
+É recomendado que cada ação tenha no máximo 150 caracteres para que o balão de conversa não fique muito grande.
 
-> "end vs "next"
-* use "end" para finalizar um diálogo e já encaminhar para a próxima intenção (sem botão)
+### "end vs "next"
 
-* "followUps" não podem estar vazios
+End:
+- use "end" para finalizar um diálogo e já encaminhar para a próxima intenção (sem botão)
+- 
+
+Next:
+- use "next" para permitir a renderização do botão 
+
+* "followUps" podem estar vazios
+
+Se você quiser cadastrar um follow up que pode ter um botão de encerrar "end", você deve ter um objeto no content[0]
