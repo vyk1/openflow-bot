@@ -9,7 +9,7 @@
         #chatbot-icon {
             width: 50px;
             height: 50px;
-            background-color: #4caf50;
+            background-color: #006633;
             color: white;
             border-radius: 50%;
             display: flex;
@@ -17,38 +17,36 @@
             justify-content: center;
             cursor: pointer;
             z-index: 1000;
-            font-size: 24px;
+            font-size: 28px;
             bottom: 0;
             right: 0;
             position: fixed;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #chatbot-icon:hover {
+            transform: scale(1.1);
         }
 
         #scroll-to-top {
             position: fixed;
             bottom: 20px;
-            /* Distância da parte inferior da tela */
             right: 20px;
-            /* Distância da parte direita da tela */
-            /* display: none; */
-            /* Escondido inicialmente */
-            background-color: #4caf50;
-            /* Cor de fundo */
+            background-color: #006633;
             color: white;
-            /* Cor do texto */
             border: none;
             border-radius: 50%;
             padding: 10px 15px;
             font-size: 18px;
             cursor: pointer;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-            /* Efeito de sombra */
             z-index: 1000;
-            /* Garante que o botão fique sobre outros elementos */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
             transition: opacity 0.3s ease;
         }
 
         #scroll-to-top:hover {
-            background-color: #97ec9a;
+            transform: scale(1.1);
         }
 
         body {
@@ -62,11 +60,27 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
-            background-color: #4caf50;
-            margin: auto;
+            background-color: #006633;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
+            margin: auto;
             position: absolute;
+            right: 20px;
+            bottom: 100px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+
+        #chat-header {
+            background-color: #006633;
+            border-radius: 10px 10px 0 0;
+            position: fixed;
+            color: white;
+            padding: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-wrap: balance;
         }
 
         .link {
@@ -83,7 +97,7 @@
         }
 
         .chat-buttons {
-            background-color: #4caf50;
+            background-color: #006633;
             border: none;
             padding: 10px;
             color: white;
@@ -134,7 +148,7 @@
 
         .thinking span {
             display: inline-block;
-            background-color: #4caf50;
+            background-color: #006633;
             width: 8px;
             height: 8px;
             border-radius: 50%;
@@ -205,16 +219,6 @@
             text-decoration: wavy;
         }
 
-        #chat-header {
-            background-color: #4caf50;
-            border-radius: 12px 0px;
-            position: fixed;
-            color: white;
-            padding: 10px;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-wrap: balance;
-        }
 
         .hidden {
             display: none;
@@ -308,7 +312,7 @@
         });
 
         document.querySelector("#scroll-to-top").onclick = () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelector("#chat-log").scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
