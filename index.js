@@ -35,606 +35,71 @@
  */
 
 
-let intentions = {
+let intentions =
+{
     "saudacao": {
         "name": "Saudação",
         "speech": [
             {
                 "type": "info",
-                "title": "Olá! Eu sou a DRICA, assistente da DIC para prevenir e tirar dúvidas sobre violência do trabalho no setor",
-                "subtitle": "Meu objetivo é ajudar você a entender melhor o que é violência no trabalho e como preveni-la. Vamos começar?"
+                "title": "Olá! Eu sou a CATARINA, assistente da DIC para auxiliar na inscrição do prêmio Honestidade nas Escolas 2024",
+                "subtitle": "Meu objetivo é te auxiliar nas dúvidas relacionadas ao prêmio. Vamos começar?"
             }
         ],
         "content": [
             [
                 {
-                    "title": "Me diga, você sabe o que é um \"bot\"?",
+                    "title": "Sua dúvida é sobre o processo de inscrição ou sobre o andamento do prêmio",
                     "type": "info"
                 }
             ],
             {
                 "options": [
                     {
-                        "text": "Não sei o que é um bot",
-                        "followUp": "nao-sei-bot"
+                        "text": "Já fiz a minha inscrição, tenho dúvidas sobre o prêmio",
+                        "followUp": "fiz-inscricao",
+                        "type": "next",
                     },
                     {
-                        "text": "Sei o que é um bot",
-                        "followUp": "sei-bot"
+                        "text": "Não fiz a minha inscrição e estou com dúvidas sobre esse processo",
+                        "followUp": "nao-fiz-inscricao",
+                        "type": "next",
                     },
                 ]
             }
         ],
         "followUps": {
-            "nao-sei-bot": {
+            "nao-fiz-incricao": {
                 "speech": [
                     {
-                        "type": "image",
-                        "src": "https://encrypted-tbn0.gstatic.com/images?q\u003dtbn:ANd9GcStEBHnnElM5xC5XAGiXerMjzMjpOhycZD8YQ\u0026s",
-                        "title": "O que é um bot?",
+                        "type": "info",
+                        "title": "Selecione a opção referente a sua dúvida.",
                     },
                     {
-                        "type": "info",
-                        "title": "Um bot é um programa de computador que simula ações humanas repetidas vezes de maneira padrão."
-                    }
-                ],
-                "content": [
-                    [],
-                    {
                         "options": [
                             {
-                                "text": "Continuar",
-                                "type": "end",
-                                "followUp": "violencia-trabalho"
-                            }
-                        ]
-                    }
-                ],
-            },
-            "sei-bot": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Que bom que você sabe o que é um bot."
-                    }
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Continuar",
-                                "type": "end",
-                                "followUp": "violencia-trabalho"
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
-    },
-    "violencia-trabalho": {
-        "name": "Violência no Trabalho",
-        "speech": [
-            {
-                "type": "info",
-                "title": "Você sabia que violência no trabalho, não é só fisica?",
-                "subtitle": "O Manual de Saúde e Segurança de SC define violência no trabalho como ação ou comportamento que cause agressão, humilhação ou ameaça ao servidor ou relacionados."
-            }
-        ],
-        "content": [
-            [
-                {
-                    "type": "link",
-                    "title": "Programa Combate ao Assédio da CGE SC",
-                    "link": "https://www.cge.sc.gov.br/combateaoassedio/"
-                }
-            ],
-            {
-                "options": [
-                    {
-                        "text": "Mais sobre discriminação",
-                        "followUp": "violencia-discriminacao"
-                    },
-                    {
-                        "text": "Mais sobre assédio",
-                        "followUp": "violencia-assedio"
-                    }
-                ]
-            }
-        ],
-        "followUps": {
-            "violencia-discriminacao": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Discriminação é toda ação ou omissão que viola os direitos humanos baseada na raça, cor, sexo, religião, opinião política, ascendência nacional, origem social, idade, condição corporal, orientação sexual, identidade e expressão de gênero, que prejudique a igualdade de oportunidades ou de tratamento no contexto do trabalho.",
-                        "subtitle": "Na esfera administrativa, a discriminação é considerada uma infração disciplinar, podendo levar à demissão do agressor."
-                    }
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Diferenças entre assédio e discriminação",
-                                "followUp": "violencia-diferencas",
+                                "text": "Tenho dúvidas sobre a documentação",
+                                "followUp": ".doc",
                                 "type": "next",
                             },
                             {
-                                "text": "Mais sobre assédio",
-                                "followUp": "violencia-assedio"
-                            },
-                        ]
-                    }
-                ]
-            },
-            "violencia-assedio": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Existem 3 aspectos que definem o assédio: Prática continuada, ou seja, violência que se estende ao longo do tempo, Atitudes abusivas que suscitam vergonha ou constrangimento; Ações que objetivam desestabilizar emocionalmente a vítima e/ou degradar psicologicamente o ambiente de trabalho",
-                        "subtitle": "Embora hajam vários tipos de assédio, iremos cobrir os principais"
-                    },
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Mais sobre discriminação",
-                                "followUp": "violencia-discriminacao"
-                            },
-                            {
-                                "text": "Assédio moral",
-                                "followUp": "violencia-assedio-moral"
-                            },
-                            {
-                                "text": "Assédio sexual",
-                                "followUp": "violencia-assedio-sexual"
-                            },
-                        ]
-                    }
-                ],
-            },
-            "violencia-assedio-moral": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Assédio moral é a exposição de um trabalhador a situações humilhantes e constrangedoras, repetitivas e prolongadas durante a jornada de trabalho e no exercício de suas funções.",
-                        "subtitle": "O assédio moral é uma prática que pode ser realizada por chefes, colegas de trabalho ou subordinados."
-                    }
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Assédio sexual",
-                                "followUp": "violencia-assedio-sexual"
-                            },
-                            {
-                                "text": "Mais sobre discriminação",
-                                "followUp": "violencia-discriminacao"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "violencia-assedio-sexual": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Assédio sexual é a exposição de um trabalhador a situações humilhantes e constrangedoras, repetitivas e prolongadas durante a jornada de trabalho e no exercício de suas funções.",
-                        "subtitle": "O assédio sexual é uma prática que pode ser realizada por chefes, colegas de trabalho ou subordinados."
-                    }
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Diferenças entre assédio e discriminação",
-                                "followUp": "violencia-diferencas",
+                                "text": "Tenho dúvidas com os prazos",
+                                "followUp": ".prazo",
                                 "type": "next",
                             },
                             {
-                                "text": "Assédio moral",
-                                "followUp": "violencia-assedio-moral"
-                            },
-                            {
-                                "text": "Mais sobre discriminação",
-                                "followUp": "violencia-discriminacao"
+                                "text": "Outras dúvidas",
+                                "followUp": ".outro",
+                                "type": "next",
                             },
                         ]
-                    }
-                ]
-            }
-        }
-    },
-    "violencia-diferencas": {
-        "name": "Diferenças entre assédio e discriminação",
-        "speech": [
-            {
-                "type": "info",
-                "title": "Existe uma estreita relação entre assédio moral e discriminação, embora sejam fenômenos distintos. ",
-                "subtitle": "Atos discriminatórios podem desencadear a prática de assédio moral, especialmente quando direcionados a grupos vulneráveis"
-            },
-            {
-                "type": "info",
-                "title": "No entanto, é importante destacar que nem toda prática de assédio moral tem como base a discriminação, assim como nem todo ato discriminatório pontual configura assédio moral.",
-                "subtitle": "O assédio moral é caracterizado pela prática continuada de atos abusivos, enquanto a discriminação pode ser pontual."
-            },
-        ],
-        "content": [
-            [],
-            {
-                "options": [
-                    {
-                        "text": "O que fazer quando presenciar violência no trabalho?",
-                        "followUp": "violencia-diferencas-acao"
-                    }
-                ]
-            }
-        ],
-        "followUps": {
-            "violencia-diferencas-acao": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Dependendo do seu papel, você pode tomar diferentes ações",
-                    },
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Vítimas",
-                                "followUp": "acao-vitimas",
-                                "type": "next"
-                            },
-                            // {
-                            //     "text": "Testemunhas",
-                            //     "followUp": "acao-testemunhas"
-                            // },
-                            // {
-                            //     "text": "Gestores",
-                            //     "followUp": "acao-gestores"
-                            // }
-                        ]
-                    }
-                ]
-            },
-            "violencia-diferencas-acao-apoiar": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Apoiar é um ato de solidariedade e empatia",
-                    },
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Continuar",
-                                "followUp": "violencia-diferencas-acao-denunciar"
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
-    },
-    "acao-vitimas": {
-        "name": "Ação para vítimas",
-        "speech": [
-            {
-                "type": "info",
-                "title": "Você foi a vítima. E agora?",
-            },
-        ],
-        "content": [
-            [
-                {
-                    "title": "Em primeiro lugar, livre-se do sentimento de culpa, uma vez que a irregularidade da conduta não depende do comportamento da vítima, mas sim do agressor.",
-                    "type": "text",
-                },
-                {
-                    "title": "Portanto, em não se cale!",
-                    "subtitle": "Deixe claro ao assediador que você não tolera tal comportamento e que a ação se configura como assédio. Diga, claramente, NÃO ao assediador. Rompa o silêncio e busque o auxílio de outras pessoas.",
-                    "type": "info",
-                },
-                {
-                    "title": "Evite conversar e permanecer sozinho(a), sem testemunhas, com o(a) assediador(a)?",
-                    "type": "text",
-                },
-                {
-                    "title": "Peça a um colega que observe a conduta do (a) assediador(a) em relação a você",
-                    "type": "text",
-                },
-                {
-                    "title": "Após identificar o tipo de violência sofrido, confira o que pode ser feito em cada caso",
-                    "type": "text",
-                }
-            ],
-            {
-                "options": [
-                    {
-                        "text": "Ainda não compreendi as diferenças entre assédio e discriminação",
-                        "followUp": "violencia-diferencas",
-                        "type": "next"
-                    },
-                    {
-                        "text": "Assédio",
-                        "followUp": "acao-vitima-assedio",
-                        "type": "next"
-                    },
-                    // {
-                    //     "text": "Discriminação",
-                    //     "followUp": "acao-vitima-discriminacao",
-                    //     "type": "next"
-                    // },
-                    // {
-                    //     "text": "Importunação",
-                    //     "followUp": "acao-vitima-importunacao",
-                    //     "type": "next"
-                    // }
-                ]
-            }
-        ],
-        "followUps": {
-            "violencia-diferencas": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Diferenças entre assédio e discriminação",
-                    },
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Continuar",
-                                "followUp": "violencia-diferencas",
-                                "type": "end"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "acao-vitima-assedio": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Ação para vítimas de assédio",
-                    }
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Continuar",
-                                "followUp": "acao-vitima-assedio",
-                                "type": "end"
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
-    },
-    "acao-vitima-assedio": {
-        "name": "Ação para vítimas de assédio",
-        "speech": [
-            {
-                "type": "info",
-                "title": "O que fazer em caso de assédio?",
-            },
-        ],
-        "content": [
-            [],
-            {
-                "options": [
-                    {
-                        "text": "Denunciar na polícia civil",
-                        "followUp": "acao-vitima-assedio-denunciar-policia",
-                    },
-                    {
-                        "text": "Denunciar na ouvidoria",
-                        "followUp": "acao-vitima-assedio-denunciar-ouvidoria",
-                    },
-                    {
-                        "text": "Buscar acolhimento",
-                        "followUp": "acao-vitima-assedio-acolhimento",
-                    },
-                    {
-                        "text": "Buscar outros serviços",
-                        "followUp": "acao-vitima-assedio-outros-servicos",
-                    },
-                    {
-                        "text": "Voltar",
-                        "followUp": "voltar-acao-vitima",
-                    },
-                    {
-                        "text": "Despedir-se",
-                        "followUp": "despedida",
-                    }
-                ]
-            }
-        ],
-        "followUps": {
-            "acao-vitima-assedio-denunciar-policia": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Primeiro, você vai precisar coletar as provas",
-                        "subtitle": "Anote datas, horários, locais, testemunhas e outras informações que possam ajudar a esclarecer o caso."
-                    },
-                    {
-                        "type": "info",
-                        "title": "Após coletar as informações, formalize a sua denúncia em uma delegacia mais próxima de você ou faça pelo site da Polícia Civil.",
-                    },
-                    {
-                        "link": "https://delegaciavirtual.sc.gov.br",
-                        "type": "link",
-                        "title": "Delegacia Virtual"
-                    },
-                    {
-                        "type": "link",
-                        "title": "Procurar delegacia perto de mim",
-                        "link": "https://www.pc.sc.gov.br/delegacias"
-                    }
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Continuar",
-                                "followUp": "acao-vitima-assedio",
-                                "type": "end"
-                            }
-                        ]
-                    }
-                ],
-                "followUps": {}
-            },
-            "acao-vitima-assedio-denunciar-ouvidoria": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Denunciar na ouvidoria",
-                        "subtitle": "Caso o assédio ocorra no ambiente de trabalho, a denúncia pode ser feita na ouvidoria da instituição."
-                    }
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Continuar",
-                                "followUp": "acao-vitima-assedio",
-                                "type": "end"
-                            }
-                        ]
-                    }
-                ],
-                "followUps": {}
-
-            },
-            "acao-vitima-assedio-acolhimento": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Buscar acolhimento",
-                        "subtitle": "Procure apoio de amigos e familiares, além de profissionais de saúde mental."
-                    }
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Continuar",
-                                "followUp": "acao-vitima-assedio",
-                                "type": "end"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "acao-vitima-assedio-outros-servicos": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Buscar outros serviços",
-                        "subtitle": "Existem diversos serviços de apoio à vítimas de violência, como o Centro de Referência de Atendimento à Mulher (CRAM) e o Centro de Referência Especializado de Assistência Social (CREAS)."
-                    }
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Continuar",
-                                "followUp": "acao-vitima-assedio",
-                                "type": "end"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "voltar-acao-vitima": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Voltar",
-                    }
-                ],
-                "content": [
-                    [],
-                    {
-                        "options": [
-                            {
-                                "text": "Voltar",
-                                "followUp": "acao-vitimas",
-                                "type": "end"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "despedida": {
-                "speech": [
-                    {
-                        "type": "info",
-                        "title": "Obrigada por usar a DRICA!",
-                    }
-                ],
-                "content": [
-                    [
-                        {
-                            "type": "info",
-                            "title": "Se precisar de mais informações, estarei por aqui.",
-                        },
-                        {
-                            "type": "link",
-                            "title": "Mais informações",
-                            "link": "https://www.cge.sc.gov.br/combateaoassedio/"
-                        },
-                        {
-                            "type": "link",
-                            "title": "Entrar em contato",
-                            "link": "mailto:dic@cge.sc.gov.br"
-                        },
-                        {
-                            "type": "link",
-                            "title": "Avaliar a DRICA",
-                            "link": "https://forms.gle/"
-                        },
-                        {
-                            "type": "link",
-                            "title": "Site da CGE SC",
-                            "link": "https://www.cge.sc.gov.br/"
-                        },
-                        {
-                            "type": "info",
-                            "title": "Até mais!"
-                        }
-                    ],
-                    {
-                        "options": []
                     }
                 ]
             }
         }
     }
 }
-
+        
 /**
  * 
  * @param {FollowUp} followUp 

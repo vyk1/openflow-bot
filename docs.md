@@ -162,3 +162,4 @@ Aqui está um exemplo completo de um diálogo onde o bot saúda o usuário e ofe
 
 ### Conclusão
 Com essa documentação, mesmo alguém leigo poderá construir a estrutura de intenções do chatbot, personalizar diálogos e interações e desenvolver novas conversas de forma simples e eficaz.
+
