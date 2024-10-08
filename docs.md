@@ -116,21 +116,28 @@ Os **follow-ups** são as ramificações da conversa, ou seja, o que acontece de
 #### Intention (Intenção)
 ```json
 {
-  "name": "NomeDaIntencao",
-  "speech": ["Texto inicial que o bot irá falar"],
-  "content": [
-    {
-      "type": "info",
-      "title": "Texto opcional que pode aparecer abaixo da fala do bot"
-    },
-    {
-      "options": [
-        { "text": "Texto do botão", "followUp": "ChaveDoFollowUp", "type": "next" }
-      ]
+  "intencao":{
+    "name": "NomeDaIntencao",
+    "speech": [
+      {
+        "text": "Texto da fala do bot",
+        "type": "text"
+      }
+    ],
+    "content": [
+      {
+        "type": "info",
+        "title": "Texto opcional que pode aparecer abaixo da fala do bot"
+      },
+      {
+        "options": [
+          { "text": "Texto do botão", "followUp": "ChaveDoFollowUp", "type": "next" }
+        ]
+      }
+    ],
+    "followUps": {
+      "ChaveDoFollowUp": { "type": "next" }
     }
-  ],
-  "followUps": {
-    "ChaveDoFollowUp": { "type": "next" }
   }
 }
 ```
@@ -139,24 +146,31 @@ Os **follow-ups** são as ramificações da conversa, ou seja, o que acontece de
 Aqui está um exemplo completo de um diálogo onde o bot saúda o usuário e oferece opções para continuar ou encerrar a conversa:
 ```json
 {
-  "name": "BoasVindas",
-  "speech": ["Olá, seja bem-vindo! Como posso ajudar?"],
-  "content": [
-    {
-      "type": "info",
-      "title": "Aqui estão as opções disponíveis"
-    },
-    {
-      "options": [
-        { "text": "Quero saber mais", "followUp": "SaberMais", "type": "next" },
-        { "text": "Finalizar", "followUp": "Despedida", "type": "end" }
-      ]
+    "boas-vindas":{
+      "name": "BoasVindas",
+      "speech": [
+        {
+          "text": "Texto da fala do bot",
+          "type": "text"
+        }
+      ],
+      "content": [
+        {
+          "type": "info",
+          "title": "Aqui estão as opções disponíveis"
+        },
+        {
+          "options": [
+            { "text": "Quero saber mais", "followUp": "SaberMais", "type": "next" },
+            { "text": "Finalizar", "followUp": "Despedida", "type": "end" }
+          ]
+        }
+      ],
+      "followUps": {
+        "SaberMais": { "type": "next" },
+        "Despedida": { "type": "end" }
+      }
     }
-  ],
-  "followUps": {
-    "SaberMais": { "type": "next" },
-    "Despedida": { "type": "end" }
-  }
 }
 ```
 

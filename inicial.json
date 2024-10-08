@@ -1,0 +1,62 @@
+{
+    "sobre": {
+        "name": "Sobre o Prêmio",
+        "speech": [
+            {
+                "text": "O Prêmio Honestidade nas Escolas é uma iniciativa da CGE-SC...",
+                "type": "text"
+            }
+        ],
+        "content": [
+            [
+                {
+                    "info": "Mais detalhes podem ser encontrados no site oficial.",
+                    "link": "https://www.cge.sc.gov.br/integridade-e-compliance/premio-honestidade-nas-escolas"
+                }
+            ],
+            {
+                "options": [
+                    {
+                        "option": "Quero saber mais sobre os objetivos",
+                        "followUp": "objetivos",
+                        "type": "next"
+                    },
+                    {
+                        "option": "Como participar?",
+                        "followUp": "regras",
+                        "type": "next"
+                    }
+                ]
+            }
+        ],
+        "followUps": [
+            {
+                "name": "Objetivos",
+                "speech": [
+                    "O objetivo do prêmio é promover a honestidade entre os estudantes..."
+                ],
+                "content": {},
+                "followUps": []
+            },
+            {
+                "name": "Regras",
+                "speech": [
+                    "Para participar do prêmio, é necessário..."
+                ],
+                "content": {},
+                "followUps": []
+            }
+        ]
+    },
+    "despedida": {
+        "name": "Despedida",
+        "speech": [
+            {
+                "text": "Obrigado por participar do Prêmio Honestidade nas Escolas!",
+                "type": "text"
+            }
+        ],
+        "content": [],
+        "followUps": []
+    }
+}
