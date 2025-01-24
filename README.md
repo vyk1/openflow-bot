@@ -26,7 +26,7 @@ Inclua o arquivo `chatbot.html` no seu HTML
 
 Exemplo de estrutura para configurar um fluxo em `index.js`
 
-```json
+```js
 let intentions = {
  "saudacao": {
         "name": "Saudação",
