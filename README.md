@@ -11,6 +11,8 @@
   - Links clicáveis.
   - Imagens.
 
+![Piloto](print-1.png)
+
 ## Exemplo de Uso
 
 ### Estrutura Básica
